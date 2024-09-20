@@ -1,0 +1,12 @@
+<div class= "container">
+    <h1 class="heading"> Topics</h1>
+    <div class="topics-container">
+        <div *ngFor="let topic of topics" class="topic-card">
+            <h2 class="topic-title" (click)="details(topic.id)">
+                {{ topic.title }}
+            </h2>
+            <p class="topic-abstract">{{ topic.abstract }}</p>
+        </div>
+    </div>
+
+</div>
