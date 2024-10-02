@@ -13,6 +13,7 @@ import java.util.*;
 public class OnLoadController {
 
     private static final Logger logger= LoggerFactory.getLogger(OnLoadController.class);
+    
     @Autowired
     private LoadService loadService;
 

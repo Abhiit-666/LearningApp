@@ -1,7 +1,15 @@
 <div class= "container">
     <h1 class="heading"> Topics</h1>
+
+    <div class="filter-container">
+        <!-- selected filter will hold the value of the filter currently chosen -->
+        <select [(ngModel)]="selectedFilter" class="filter-select">
+            <option *ngFor="let filter of filterOptions" [value]="filter">{{ filter }}</option>
+        </select>
+    </div>
+
     <div class="topics-container">
-        <div *ngFor="let topic of topics" class="topic-card">
+        <div *ngFor="let topic of filteredTopics()" class="topic-card">
             <h2 class="topic-title" (click)="details(topic.id)">
                 {{ topic.title }}
             </h2>
