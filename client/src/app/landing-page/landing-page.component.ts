@@ -13,11 +13,11 @@ export class LandingPageComponent implements OnInit {
 
   constructor(private filterService: FilterServiceService,private router:Router){}
   
+  selectedFilter: string = '';
   ngOnInit(): void {
       this.selectedFilter=this.filterService.getFilter();
   }
   
-  selectedFilter: string = '';
   
   
   filterOptions: string[] = ['All Topics','Most Viewed','Easiest To Harderst','Hardest to Easiest'];
@@ -26,12 +26,13 @@ export class LandingPageComponent implements OnInit {
     if(this.selectedFilter=='All Topics'){
       return this.topics;
     }
-
+    
+    this.filterService.setFilter(this.selectedFilter);
+    return this.topics;
     // return this.topics.filter(topic =>
     //   //logic to filter
     // );
 
-    this.filterService.setFilter(this.selectedFilter);
 
   }
 
@@ -44,9 +45,20 @@ export class LandingPageComponent implements OnInit {
     abstract: 'Web Sockets are interesting and used in Chat applications, video game servers etc, where an open connection is required',
     view_count:100,
     difficulity:3,
+    },
+    {
+      id:1,
+      title: 'Parser',
+      abstract: 'Web Sockets are interesting and used in Chat applications, video game servers etc, where an open connection is required',
+      view_count:120,
+      difficulity:1,
     }
+
   ]
 
+  getStars(difficulity:  number): boolean[]{
+    return Array(5).fill(false).map((_,i)=> i < difficulity)
+  }
 
   details(id:number){
     this.router.navigate(['/topic',id]);

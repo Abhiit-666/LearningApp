@@ -52,3 +52,34 @@
     font-size: 1rem;
     color:#666;
 }
+
+.topic-info{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 10px;
+}
+
+.views{
+    margin-top: 5px;
+    color: #888;
+    font-size: 12px;
+}
+
+.difficulty{
+    /* position:relative */
+    /* right:0px; */
+    margin-top: 5px;
+    display:flex;
+    justify-content: flex-end;
+    color:gold;
+}
+
+.fa-eye{
+    margin-right:5px;
+}
+
+.fa-star, .fa-star-o{
+    font-size: 12px;
+    margin-right:2px;
+}
