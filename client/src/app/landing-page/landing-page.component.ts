@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FilterServiceService } from '../filter-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,10 +9,11 @@ import { FilterServiceService } from '../filter-service.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+
   //load the topics
   //sample topics for now
 
-  constructor(private filterService: FilterServiceService,private router:Router){}
+  constructor(private filterService: FilterServiceService,private router:Router,private http:HttpClient){}
   
   selectedFilter: string = '';
   ngOnInit(): void {
@@ -61,6 +63,19 @@ export class LandingPageComponent implements OnInit {
   }
 
   details(id:number){
+    this.incrementViewCount(id); 
     this.router.navigate(['/topic',id]);
+  }
+
+  incrementViewCount(id:number){
+    this.http.post("localhost:8080/api/details/updateViews",{}).subscribe(
+      (response)=>{
+
+        console.log("Views updated");
+      },
+      (error)=>{
+        console.log("Error while updating views");
+      }
+    );
   }
 }

@@ -3,6 +3,7 @@ package com.example.learningapp.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.example.learningapp.Model.Topic;
 
@@ -36,5 +37,14 @@ public class LoadServiceImpl implements LoadService{
 
         }
         return List.of();
+    }
+
+    @Override
+    public Topic updateViews(String id){
+        Topic topic=loadRepository.updateViews(String id);
+        return topic;
+        // String sql="Select view_count from Topics where id=?";
+        // Long count= JdbcTemplate.queryforObject(sql,Long.class,id);
+
     }
 }
