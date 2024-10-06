@@ -7,27 +7,80 @@
             <option *ngFor="let filter of filterOptions" [value]="filter">{{ filter }}</option>
         </select>
     </div>
-
-    <div class="topics-container">
-        <div *ngFor="let topic of filteredTopics()" class="topic-card">
-            <h2 class="topic-title" (click)="details(topic.id)">
-                {{ topic.title }}
-            </h2>
-            <p class="topic-abstract">{{ topic.abstract }}</p>
-            
-            <div class="topic-info">
-                <!-- Views with eye  -->
-                <div class="views">
-                    <i class="fas fa-eye"></i>{{topic.view_count}}
-                </div>
     
-                <div class="difficulty">
-                    <span *ngFor="let star of getStars(topic.difficulity)">
-                        <i class="fas" [ngClass]="{'fa-star': star,'fa-star-o':!star}"></i>
-                    </span>
+    <div class="body-container">
+        <div class="section-nav">
+            <h1 (click)="selectSection('backend')" [class.active]="selectedSection === 'backend'">Backend</h1>
+            <h1 (click)="selectSection('topcis')" [class.active]="selectedSection === 'topics'">Topics</h1>
+            <h1 (click)="selectSection('frontend')" [class.active]="selectedSection === 'frontend'">Frontend</h1>
+        </div>
+        <div class ="content-container">
+            <div *ngIf="selectedSection === 'backend'" class="backend-container">
+                <div *ngFor="let topic of filteredTopics()" class="topic-card">
+                    <h2 class="topic-title" (click)="details(topic.id)">
+                        {{ topic.title }}
+                    </h2>
+                    <p class="topic-abstract">{{ topic.abstract }}</p>
+                    
+                    <div class="topic-info">
+                        <!-- Views with eye  -->
+                        <div class="views">
+                            <i class="fas fa-eye"></i>{{topic.view_count}}
+                        </div>
+            
+                        <div class="difficulty">
+                            <span *ngFor="let star of getStars(topic.difficulity)">
+                                <i class="fas" [ngClass]="{'fa-star': star,'fa-star-o':!star}"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div *ngIf="selectedSection === 'topics'" class="topics-container">
+                <div *ngFor="let topic of filteredTopics()" class="topic-card">
+                    <h2 class="topic-title" (click)="details(topic.id)">
+                        {{ topic.title }}
+                    </h2>
+                    <p class="topic-abstract">{{ topic.abstract }}</p>
+                    
+                    <div class="topic-info">
+                        <!-- Views with eye  -->
+                        <div class="views">
+                            <i class="fas fa-eye"></i>{{topic.view_count}}
+                        </div>
+            
+                        <div class="difficulty">
+                            <span *ngFor="let star of getStars(topic.difficulity)">
+                                <i class="fas" [ngClass]="{'fa-star': star,'fa-star-o':!star}"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedSection === 'frontend'" class="frontend-container">
+                <div *ngFor="let topic of filteredTopics()" class="topic-card">
+                    <h2 class="topic-title" (click)="details(topic.id)">
+                        {{ topic.title }}
+                    </h2>
+                    <p class="topic-abstract">{{ topic.abstract }}</p>
+                    
+                    <div class="topic-info">
+                        <!-- Views with eye  -->
+                        <div class="views">
+                            <i class="fas fa-eye"></i>{{topic.view_count}}
+                        </div>
+            
+                        <div class="difficulty">
+                            <span *ngFor="let star of getStars(topic.difficulity)">
+                                <i class="fas" [ngClass]="{'fa-star': star,'fa-star-o':!star}"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
 
 </div>

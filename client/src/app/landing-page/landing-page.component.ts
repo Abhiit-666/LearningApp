@@ -17,7 +17,7 @@ export class LandingPageComponent implements OnInit {
   page=0;
   size=10;
   selectedFilter: string = '';
-  
+  selectedSection: string ='topics'; 
 
   constructor(private filterService: FilterServiceService,private router:Router,private http:HttpClient){}
   
@@ -32,7 +32,9 @@ export class LandingPageComponent implements OnInit {
       // this.loadTopics();
   }
   
-  
+  selectSection(section:string){
+    this.selectedSection=section;
+  }
   
   filterOptions: string[] = ['All Topics','Most Viewed','Easiest To Harderst','Hardest to Easiest'];
   
@@ -48,22 +50,22 @@ export class LandingPageComponent implements OnInit {
     // );
   }
 
-  loadTopics(): void {
-    this.filteredService.getTopics(this.page, this.size).subscribe(
-      (response: any) => {
-        this.topics=[...this.topics, ...response.content];
+  // loadTopics(): void {
+  //   this.filterService.getTopics(this.page, this.size).subscribe(
+  //     (response: any) => {
+  //       this.topics=[...this.topics, ...response.content];
         
-        if(this.topics.length> 50){
-          this.topics=this.topics.slice(-100);
-        }
+  //       if(this.topics.length> 50){
+  //         this.topics=this.topics.slice(-100);
+  //       }
     
-        this.page += 1;
-      },
-      (error: any)=>{
-        console.log("Error fetching topics",error);
-      }
-    )
-  }
+  //       this.page += 1;
+  //     },
+  //     (error: any)=>{
+  //       console.log("Error fetching topics",error);
+  //     }
+  //   )
+  // }
 
   
 
