@@ -3,16 +3,16 @@ package com.example.learningapp.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.example.learningapp.Model.Topic;
 
 
 
 public class LoadServiceImpl implements LoadService{
+
     @Autowired
     private LoadRepository loadRepository;
-
+    
     
     @Override
     public List<Topic> fetchtop(){

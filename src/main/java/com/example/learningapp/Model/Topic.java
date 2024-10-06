@@ -5,7 +5,7 @@ public class Topic {
     private Long id;
     private String title;
     private String abstractt;
-    private Long view_count;
+    private int view_count;
     private int difficulity;
 
 
@@ -34,13 +34,15 @@ public class Topic {
         this.abstractt = abstractt;
     }
 
-    public Long getView_count() {
+
+    public int getView_count() {
         return this.view_count;
     }
 
-    public void setView_count(Long view_count) {
+    public void setView_count(int view_count) {
         this.view_count = view_count;
     }
+    
 
     public int getDifficulity() {
         return this.difficulity;

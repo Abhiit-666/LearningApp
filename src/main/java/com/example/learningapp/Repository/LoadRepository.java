@@ -27,7 +27,7 @@ public class LoadRepository {
         Topic topic=jdbcTemplate.queryForObject(sql, Topic.class,id);
 
         Integer redisViewCount=redisTemplate.opsForValue().get(redisKey);
-        topic.setView_count((long(redisViewCount)));
+        topic.setView_count(redisViewCount);
 
         return topic;
     }
