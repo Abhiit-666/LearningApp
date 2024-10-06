@@ -1,5 +1,6 @@
 package com.example.learningapp.Controller;
 
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import java.util.*;
 @RestController("api/load")
 public class OnLoadController {
 
-    private static final Logger logger= LoggerFactory.getLogger(OnLoadController.class);
+    private static final Logger logger= Logger.getLogger(OnLoadController.class.getName());
     
     @Autowired
     private LoadService loadService;
